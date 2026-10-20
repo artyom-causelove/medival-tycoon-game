@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/tree.gd" id="1_tree_script"]
+[ext_resource type="PackedScene" uid="uid://csss3ke81g5kw" path="res://assets/models/trees/stylized_tree.glb" id="2_normal"]
+[ext_resource type="PackedScene" uid="uid://cfhkwn2f5md8c" path="res://assets/models/trees/stylized_tree_bushy.glb" id="3_bushy"]
+[ext_resource type="PackedScene" uid="uid://yb2ljmmcwoav" path="res://assets/models/trees/stylized_tree_oak.glb" id="4_oak"]
+[ext_resource type="PackedScene" uid="uid://dfmctflldhx1h" path="res://assets/models/trees/stylized_tree_tall.glb" id="5_tall"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_trunk"]
+radius = 0.3
+height = 3.0
+
+[node name="Tree" type="Node3D"]
+script = ExtResource("1_tree_script")
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="Normal" parent="Models" instance=ExtResource("2_normal")]
+
+[node name="Bushy" parent="Models" instance=ExtResource("3_bushy")]
+visible = false
+
+[node name="Oak" parent="Models" instance=ExtResource("4_oak")]
+visible = false
+
+[node name="Tall" parent="Models" instance=ExtResource("5_tall")]
+visible = false
+
+[node name="Collision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_trunk")

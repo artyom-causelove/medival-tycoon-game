@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dcc4c60jiso2f"]
+
+[ext_resource type="PackedScene" path="res://scenes/rts_camera.tscn" id="3_rts_camera"]
+[ext_resource type="Script" uid="uid://mfmtchbwx25x" path="res://scripts/day_night_cycle.gd" id="16_day_night"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="17_hud"]
+
+[sub_resource type="GDScript" id="GDScript_cxu15"]
+script/source = "extends Node3D
+
+
+func _ready():
+	BuildingController.game_scene = $\".\"
+	BuildingController.add_building(
+		Types.Building.House,
+		Vector3(160.0, 0.0, 40.0),
+		Vector3(0.0, -96.0, 0.0)
+	)
+	BuildingController.add_building(
+		Types.Building.Windmill,
+		Vector3(156.0, 0.0, 46.0),
+		Vector3(0.0, 120.0, 0.0)
+	)
+	BuildingController.add_building(
+		Types.Building.PlowedBeds,
+		Vector3(168.0, 0.0, 44.0),
+		Vector3(0.0, 0.0, 0.0)
+	)
+
+func _process(delta: float):
+	ProductionController.process(delta)
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_daynight"]
+sky_top_color = Color(0.35, 0.55, 0.85, 1)
+sky_horizon_color = Color(0.75, 0.85, 0.95, 1)
+
+[sub_resource type="Sky" id="Sky_daynight"]
+sky_material = SubResource("ProceduralSkyMaterial_daynight")
+
+[sub_resource type="Environment" id="Environment_daynight"]
+background_mode = 2
+sky = SubResource("Sky_daynight")
+ambient_light_source = 2
+ssao_enabled = true
+ssao_radius = 1.5
+ssao_intensity = 3.0
+ssao_power = 2.0
+
+[node name="Node3D" type="Node3D" unique_id=146139128]
+script = SubResource("GDScript_cxu15")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=861305853 groups=["world_environment"]]
+environment = SubResource("Environment_daynight")
+
+[node name="Light" type="DirectionalLight3D" parent="." unique_id=1345048574]
+transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
+shadow_enabled = true
+script = ExtResource("16_day_night")
+
+[node name="Camera" parent="." unique_id=1827130059 instance=ExtResource("3_rts_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.50936, -6.4804745, 15.756462)
+
+[node name="HUD" parent="." unique_id=1643446305 instance=ExtResource("17_hud")]

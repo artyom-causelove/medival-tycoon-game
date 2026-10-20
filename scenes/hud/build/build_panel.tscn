@@ -1,0 +1,505 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scenes/hud/build/scripts/build_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/icons/hammer.png" id="2_hammer"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/icons/rotate.png" id="3_rotate"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/icons/close.png" id="4_close"]
+[ext_resource type="FontFile" path="res://fonts/Alegreya-Bold.woff" id="5_alegreya_bold"]
+[ext_resource type="FontFile" path="res://fonts/AlegreyaSans-Bold.ttf" id="7_sans_bold"]
+[ext_resource type="FontFile" path="res://fonts/AlegreyaSans-Regular.ttf" id="8_sans_regular"]
+[ext_resource type="FontFile" path="res://fonts/AlegreyaSans-Medium.ttf" id="9_sans_medium"]
+[ext_resource type="PackedScene" path="res://scenes/hud/build/model_thumbnail.tscn" id="10_thumbnail"]
+
+[sub_resource type="StyleBoxFlat" id="Style_frame"]
+bg_color = Color(0.11764706, 0.14117648, 0.14901961, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.29019609, 0.23921569, 0.17254902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 18
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="Style_buildbtn_closed"]
+bg_color = Color(0.16862746, 0.2, 0.20784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29019609, 0.23921569, 0.17254902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 4.0
+content_margin_right = 16.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="Style_buildbtn_closed_hover"]
+bg_color = Color(0.1888621, 0.224, 0.23278432, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29019609, 0.23921569, 0.17254902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 4.0
+content_margin_right = 16.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="Style_buildbtn_open"]
+bg_color = Color(0.6901961, 0.5529412, 0.3098039, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8509804, 0.7607843, 0.5058824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 4.0
+content_margin_right = 16.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="Style_buildbtn_open_hover"]
+bg_color = Color(0.77301997, 0.6192941, 0.3470196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8509804, 0.7607843, 0.5058824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 4.0
+content_margin_right = 16.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="Style_iconbtn_normal"]
+bg_color = Color(0.16862746, 0.2, 0.20784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29019609, 0.23921569, 0.17254902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_iconbtn_hover"]
+bg_color = Color(0.21568628, 0.25490198, 0.24705882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5411765, 0.45490196, 0.2509804, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_iconbtn_down"]
+bg_color = Color(0.1254902, 0.14901961, 0.14117648, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5411765, 0.45490196, 0.2509804, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_plate40"]
+bg_color = Color(0.2, 0.23529412, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29019609, 0.23921569, 0.17254902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="Style_plate112"]
+bg_color = Color(0.2, 0.23529412, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29019609, 0.23921569, 0.17254902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Style_info_panel"]
+bg_color = Color(0.10196079, 0.12156863, 0.12941177, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24705882, 0.2, 0.15294118, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="Style_new_tag"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6901961, 0.5529412, 0.3098039, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 6.0
+content_margin_right = 6.0
+
+[node name="BuildPanel" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color(0.039215688, 0.050980393, 0.05490196, 0.55)
+
+[node name="Window" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.0
+offset_top = -286.0
+offset_right = 427.0
+offset_bottom = 286.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("Style_frame")
+
+[node name="WindowMargin" type="MarginContainer" parent="Window"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Body" type="HBoxContainer" parent="Window/WindowMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="List" type="VBoxContainer" parent="Window/WindowMargin/Body"]
+custom_minimum_size = Vector2(552, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InfoPanel" type="PanelContainer" parent="Window/WindowMargin/Body"]
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_info_panel")
+
+[node name="InfoMargin" type="MarginContainer" parent="Window/WindowMargin/Body/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="InfoContent" type="VBoxContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Plate" type="PanelContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent"]
+custom_minimum_size = Vector2(112, 112)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Style_plate112")
+
+[node name="Icon" type="TextureRect" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/Plate"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Thumbnail" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/Plate" instance=ExtResource("10_thumbnail")]
+visible = false
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="NoModel" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/Plate"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("9_sans_medium")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text = "модели пока нет"
+
+[node name="Hidden" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/Plate"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("5_alegreya_bold")
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.3607843, 0.3882353, 0.3764706, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "?"
+
+[node name="TitleBlock" type="VBoxContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/TitleBlock"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_alegreya_bold")
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9411765, 0.90588236, 0.8235294, 1)
+text = "Постройка"
+
+[node name="MetaRow" type="HBoxContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/TitleBlock"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Section" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/TitleBlock/MetaRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("7_sans_bold")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+vertical_alignment = 1
+text = "РАЗДЕЛ"
+
+[node name="NewTag" type="PanelContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/TitleBlock/MetaRow"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("Style_new_tag")
+
+[node name="Label" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/TitleBlock/MetaRow/NewTag"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_sans_bold")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.9019608, 0.7882353, 0.5294118, 1)
+vertical_alignment = 1
+text = "НОВОЕ"
+
+[node name="Desc" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_sans_regular")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.81176472, 0.83137256, 0.76862746, 1)
+theme_override_constants/line_spacing = 6
+autowrap_mode = 3
+text = "Описание постройки."
+
+[node name="Divider" type="ColorRect" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.5411765, 0.45490196, 0.2509804, 0.3)
+
+[node name="PriceRow" type="HBoxContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="PriceLabel" type="Label" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/PriceRow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_sans_bold")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+vertical_alignment = 1
+text = "ЦЕНА"
+
+[node name="PriceItems" type="HBoxContainer" parent="Window/WindowMargin/Body/InfoPanel/InfoMargin/InfoContent/PriceRow"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Close" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 373.0
+offset_top = -306.0
+offset_right = 413.0
+offset_bottom = -266.0
+mouse_filter = 1
+icon_alignment = 1
+alignment = 1
+theme_override_constants/icon_max_width = 30
+theme_override_styles/normal = SubResource("Style_iconbtn_normal")
+theme_override_styles/hover = SubResource("Style_iconbtn_hover")
+theme_override_styles/pressed = SubResource("Style_iconbtn_down")
+icon = ExtResource("4_close")
+
+[node name="Root" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Bar" type="PanelContainer" parent="Root"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("Style_frame")
+
+[node name="BarMargin" type="MarginContainer" parent="Root/Bar"]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_right = 9
+
+[node name="BarContent" type="HBoxContainer" parent="Root/Bar/BarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="BuildButton" type="Button" parent="Root/Bar/BarMargin/BarContent"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+toggle_mode = true
+theme_override_colors/font_color = Color(0.81176472, 0.83137256, 0.76862746, 1)
+theme_override_colors/font_hover_color = Color(0.81176472, 0.83137256, 0.76862746, 1)
+theme_override_colors/font_pressed_color = Color(0.11764706, 0.14117648, 0.14901961, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.11764706, 0.14117648, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("7_sans_bold")
+theme_override_font_sizes/font_size = 16
+theme_override_constants/icon_max_width = 30
+theme_override_constants/h_separation = 8
+theme_override_styles/normal = SubResource("Style_buildbtn_closed")
+theme_override_styles/hover = SubResource("Style_buildbtn_closed_hover")
+theme_override_styles/pressed = SubResource("Style_buildbtn_open")
+theme_override_styles/hover_pressed = SubResource("Style_buildbtn_open_hover")
+icon = ExtResource("2_hammer")
+text = "Строительство"
+
+[node name="Placement" type="HBoxContainer" parent="Root/Bar/BarMargin/BarContent"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 14
+
+[node name="Info" type="HBoxContainer" parent="Root/Bar/BarMargin/BarContent/Placement"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Plate" type="PanelContainer" parent="Root/Bar/BarMargin/BarContent/Placement/Info"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("Style_plate40")
+
+[node name="Icon" type="TextureRect" parent="Root/Bar/BarMargin/BarContent/Placement/Info/Plate"]
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Thumbnail" parent="Root/Bar/BarMargin/BarContent/Placement/Info/Plate" instance=ExtResource("10_thumbnail")]
+visible = false
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="Text" type="VBoxContainer" parent="Root/Bar/BarMargin/BarContent/Placement/Info"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="Name" type="Label" parent="Root/Bar/BarMargin/BarContent/Placement/Info/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_alegreya_bold")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9411765, 0.90588236, 0.8235294, 1)
+text = "Постройка"
+
+[node name="Hint" type="Label" parent="Root/Bar/BarMargin/BarContent/Placement/Info/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_sans_medium")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+text = "ЛКМ — поставить · R — повернуть · ПКМ — к списку"
+
+[node name="Buttons" type="HBoxContainer" parent="Root/Bar/BarMargin/BarContent/Placement"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="RotateButton" type="Button" parent="Root/Bar/BarMargin/BarContent/Placement/Buttons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 1
+icon_alignment = 1
+alignment = 1
+theme_override_constants/icon_max_width = 30
+theme_override_styles/normal = SubResource("Style_iconbtn_normal")
+theme_override_styles/hover = SubResource("Style_iconbtn_hover")
+theme_override_styles/pressed = SubResource("Style_iconbtn_down")
+icon = ExtResource("3_rotate")
+
+[node name="CancelButton" type="Button" parent="Root/Bar/BarMargin/BarContent/Placement/Buttons"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 1
+icon_alignment = 1
+alignment = 1
+theme_override_constants/icon_max_width = 30
+theme_override_styles/normal = SubResource("Style_iconbtn_normal")
+theme_override_styles/hover = SubResource("Style_iconbtn_hover")
+theme_override_styles/pressed = SubResource("Style_iconbtn_down")
+icon = ExtResource("4_close")

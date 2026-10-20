@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://cnyd0sjs8r1ug"]
+
+[ext_resource type="Texture2D" uid="uid://dy16dnsd2m6o8" path="res://assets/textures/ui/ui_atlas.png" id="1_7hrah"]
+[ext_resource type="Texture2D" uid="uid://4hhhp2kgpo01" path="res://assets/textures/ui/progress_bg.png" id="2_xktos"]
+[ext_resource type="Texture2D" uid="uid://x2r3gxwn2n88" path="res://assets/textures/ui/progress_fill.png" id="3_ynil8"]
+[ext_resource type="FontFile" uid="uid://eqxvehwonlrq" path="res://fonts/AlegreyaSans-Bold.ttf" id="4_sans_bold"]
+[ext_resource type="FontFile" uid="uid://dowfb2vhugwrx" path="res://fonts/AlegreyaSans-Medium.ttf" id="5_sans_medium"]
+[ext_resource type="Script" uid="uid://cb0n4md2esp7a" path="res://scenes/hud/buildings/production/scripts/main_view.gd" id="6_script_mainview"]
+[ext_resource type="PackedScene" path="res://scenes/hud/buildings/production/resource_slot.tscn" id="7_resource_slot"]
+
+[sub_resource type="AtlasTexture" id="Atlas_panel_inner"]
+atlas = ExtResource("1_7hrah")
+region = Rect2(420, 198, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_slot_empty"]
+atlas = ExtResource("1_7hrah")
+region = Rect2(36, 262, 32, 32)
+
+[node name="MainView" type="Control" unique_id=1454699425]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 11.2
+offset_top = 81.2
+offset_right = 968.8
+offset_bottom = 590.8
+mouse_filter = 2
+script = ExtResource("6_script_mainview")
+
+[node name="RecipesDiamond" type="Polygon2D" parent="." unique_id=648714437]
+position = Vector2(25.2, 21)
+color = Color(0.7882353, 0.6431373, 0.36862746, 1)
+polygon = PackedVector2Array(-5.6, 0, 0, -5.6, 5.6, 0, 0, 5.6)
+
+[node name="RecipesLabel" type="Label" parent="." unique_id=1315473502]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.2
+offset_right = 439.6
+offset_bottom = 36.4
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_fonts/font = ExtResource("4_sans_bold")
+theme_override_font_sizes/font_size = 20
+text = "РЕЦЕПТЫ"
+
+[node name="RecipesScroll" type="ScrollContainer" parent="." unique_id=672507451]
+layout_mode = 0
+offset_left = 25.2
+offset_top = 44.8
+offset_right = 439.6
+offset_bottom = 590.8
+horizontal_scroll_mode = 0
+
+[node name="RecipesList" type="VBoxContainer" parent="RecipesScroll" unique_id=788784771]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="ProductionDiamond" type="Polygon2D" parent="." unique_id=1904884201]
+position = Vector2(462, 21)
+color = Color(0.7882353, 0.6431373, 0.36862746, 1)
+polygon = PackedVector2Array(-5.6, 0, 0, -5.6, 5.6, 0, 0, 5.6)
+
+[node name="ProductionLabel" type="Label" parent="." unique_id=925625196]
+layout_mode = 0
+offset_left = 478.8
+offset_top = 11.2
+offset_right = 932.4
+offset_bottom = 36.4
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_fonts/font = ExtResource("4_sans_bold")
+theme_override_font_sizes/font_size = 20
+text = "ПРОИЗВОДСТВО"
+
+[node name="PanelInProgress" type="NinePatchRect" parent="." unique_id=239970505]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 44.8
+offset_right = 932.4
+offset_bottom = 240.8
+texture = SubResource("Atlas_panel_inner")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="RecipeRow" type="HBoxContainer" parent="PanelInProgress" unique_id=28226629]
+layout_mode = 0
+offset_left = 22.4
+offset_top = 22.4
+offset_right = 448.0
+offset_bottom = 67.2
+mouse_filter = 2
+theme_override_constants/separation = 11
+
+[node name="IngredientsBox" type="HBoxContainer" parent="PanelInProgress/RecipeRow" unique_id=1489732244]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Arrow" type="Label" parent="PanelInProgress/RecipeRow" unique_id=324872025]
+layout_mode = 2
+custom_minimum_size = Vector2(42, 44.8)
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 28
+text = "→"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultSlot" parent="PanelInProgress/RecipeRow" instance=ExtResource("7_resource_slot") unique_id=1828721405]
+layout_mode = 2
+
+[node name="ProgressBg" type="NinePatchRect" parent="PanelInProgress" unique_id=2141567832]
+layout_mode = 0
+offset_left = 22.4
+offset_top = 84.0
+offset_right = 448.0
+offset_bottom = 106.4
+texture = ExtResource("2_xktos")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+
+[node name="ProgressFill" type="TextureRect" parent="PanelInProgress/ProgressBg" unique_id=1927933064]
+layout_mode = 0
+offset_left = 2.8
+offset_top = 2.8
+offset_right = 211.4
+offset_bottom = 19.6
+mouse_filter = 2
+texture = ExtResource("3_ynil8")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="StatusLabel" type="Label" parent="PanelInProgress" unique_id=289820006]
+layout_mode = 0
+offset_left = 22.4
+offset_top = 117.6
+offset_right = 448.0
+offset_bottom = 145.6
+theme_override_colors/font_color = Color(0.8, 0.83, 0.77, 1)
+theme_override_font_sizes/font_size = 20
+text = "В работе: 50%"
+
+[node name="StorageDiamond" type="Polygon2D" parent="." unique_id=2007223714]
+position = Vector2(462, 261.8)
+color = Color(0.7882353, 0.6431373, 0.36862746, 1)
+polygon = PackedVector2Array(-5.6, 0, 0, -5.6, 5.6, 0, 0, 5.6)
+
+[node name="StorageLabel" type="Label" parent="." unique_id=1162346355]
+layout_mode = 0
+offset_left = 478.8
+offset_top = 252.0
+offset_right = 932.4
+offset_bottom = 277.2
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_fonts/font = ExtResource("4_sans_bold")
+theme_override_font_sizes/font_size = 20
+text = "СКЛАД ПОСТРОЙКИ"
+
+[node name="PanelWarehouse" type="NinePatchRect" parent="." unique_id=679319739]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 285.6
+offset_right = 932.4
+offset_bottom = 439.6
+texture = SubResource("Atlas_panel_inner")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Icon0" type="TextureRect" parent="PanelWarehouse" unique_id=553575219]
+layout_mode = 0
+offset_left = 19.6
+offset_top = 14.0
+offset_right = 44.8
+offset_bottom = 39.2
+mouse_filter = 2
+texture = SubResource("Atlas_slot_empty")
+expand_mode = 1
+
+[node name="Row0" type="Label" parent="PanelWarehouse" unique_id=901087774]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 14.0
+offset_right = 448.0
+offset_bottom = 39.2
+theme_override_colors/font_color = Color(0.8, 0.83, 0.77, 1)
+theme_override_fonts/font = ExtResource("5_sans_medium")
+theme_override_font_sizes/font_size = 22
+text = "Дерево — 12"
+
+[node name="Divider0" type="ColorRect" parent="PanelWarehouse" unique_id=1843361150]
+layout_mode = 0
+offset_left = 19.6
+offset_top = 47.6
+offset_right = 448.0
+offset_bottom = 49.0
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Icon1" type="TextureRect" parent="PanelWarehouse" unique_id=1447944425]
+layout_mode = 0
+offset_left = 19.6
+offset_top = 57.4
+offset_right = 44.8
+offset_bottom = 82.6
+mouse_filter = 2
+texture = SubResource("Atlas_slot_empty")
+expand_mode = 1
+
+[node name="Row1" type="Label" parent="PanelWarehouse" unique_id=758140222]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 57.4
+offset_right = 448.0
+offset_bottom = 82.6
+theme_override_colors/font_color = Color(0.8, 0.83, 0.77, 1)
+theme_override_fonts/font = ExtResource("5_sans_medium")
+theme_override_font_sizes/font_size = 22
+text = "Камень — 5"
+
+[node name="Divider1" type="ColorRect" parent="PanelWarehouse" unique_id=1943892447]
+layout_mode = 0
+offset_left = 19.6
+offset_top = 91.0
+offset_right = 448.0
+offset_bottom = 92.4
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Icon2" type="TextureRect" parent="PanelWarehouse" unique_id=547026982]
+layout_mode = 0
+offset_left = 19.6
+offset_top = 100.8
+offset_right = 44.8
+offset_bottom = 126.0
+mouse_filter = 2
+texture = SubResource("Atlas_slot_empty")
+expand_mode = 1
+
+[node name="Row2" type="Label" parent="PanelWarehouse" unique_id=1869437329]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 100.8
+offset_right = 448.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.8, 0.83, 0.77, 1)
+theme_override_fonts/font = ExtResource("5_sans_medium")
+theme_override_font_sizes/font_size = 22
+text = "Зерно — 8"

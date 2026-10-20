@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/wheat.gd" id="1_wheat_script"]
+[ext_resource type="PackedScene" path="res://assets/models/wheat/wheat_sprout.glb" id="2_sprout"]
+[ext_resource type="PackedScene" path="res://assets/models/wheat/wheat_tiller.glb" id="3_tiller"]
+[ext_resource type="PackedScene" path="res://assets/models/wheat/wheat_stem.glb" id="4_stem"]
+[ext_resource type="PackedScene" path="res://assets/models/wheat/wheat_heading.glb" id="5_heading"]
+[ext_resource type="PackedScene" path="res://assets/models/wheat/wheat_ripe.glb" id="6_ripe"]
+
+[node name="Wheat" type="Node3D"]
+script = ExtResource("1_wheat_script")
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="Sprout" parent="Models" instance=ExtResource("2_sprout")]
+
+[node name="Tiller" parent="Models" instance=ExtResource("3_tiller")]
+visible = false
+
+[node name="Stem" parent="Models" instance=ExtResource("4_stem")]
+visible = false
+
+[node name="Heading" parent="Models" instance=ExtResource("5_heading")]
+visible = false
+
+[node name="Ripe" parent="Models" instance=ExtResource("6_ripe")]
+visible = false

@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/rts_camera.gd" id="1_rts_cam"]
+
+[node name="RTSCamera" type="Node3D"]
+script = ExtResource("1_rts_cam")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.8328811, 0.46284407, -0.3034542, 0, 0.54829365, 0.8362859, 0.55345196, 0.6965267, -0.4566634, 22.542868, 19.59923, 18.574211)
+current = true

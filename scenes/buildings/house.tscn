@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/buildings/building_visual.gd" id="1_visual_script"]
+[ext_resource type="PackedScene" path="res://assets/models/houses/house_1.glb" id="2_house_1"]
+[ext_resource type="PackedScene" path="res://assets/models/houses/house_2.glb" id="3_house_2"]
+[ext_resource type="PackedScene" path="res://assets/models/houses/house_3.glb" id="4_house_3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_house"]
+size = Vector3(4, 3, 4)
+
+[node name="House" type="Node3D"]
+script = ExtResource("1_visual_script")
+
+[node name="Models" type="Node3D" parent="."]
+
+[node name="House1" parent="Models" instance=ExtResource("2_house_1")]
+
+[node name="House2" parent="Models" instance=ExtResource("3_house_2")]
+visible = false
+
+[node name="House3" parent="Models" instance=ExtResource("4_house_3")]
+visible = false
+
+[node name="Collision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_house")

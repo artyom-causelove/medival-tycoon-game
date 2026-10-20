@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bptoxuma6xeh"]
+
+[ext_resource type="Script" uid="uid://c1g5qtg0l01im" path="res://scripts/main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=963274599]
+script = ExtResource("1_06t4h")
+
+[node name="Button" type="Button" parent="." unique_id=1752323994]
+anchors_preset = -1
+anchor_left = 0.087000005
+anchor_top = 0.22500001
+anchor_right = 0.397
+anchor_bottom = 0.53000003
+offset_left = -0.22400665
+offset_top = 0.19999695
+offset_right = -0.47232056
+offset_bottom = -0.1758728
+text = "TEST"
+
+[connection signal="pressed" from="Button" to="." method="_on_start_button_pressed"]

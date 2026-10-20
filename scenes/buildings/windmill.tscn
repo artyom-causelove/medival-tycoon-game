@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://2e8vsgt0du2g"]
+
+[ext_resource type="Script" uid="uid://buavgky7hymet" path="res://scripts/buildings/building_visual.gd" id="1_visual_script"]
+[ext_resource type="PackedScene" uid="uid://c4kmaloi26fuv" path="res://assets/models/windmill/windmill_1.glb" id="2_windmill_1"]
+[ext_resource type="PackedScene" uid="uid://bjkw456kjn4xm" path="res://assets/models/windmill/windmill_2.glb" id="3_windmill_2"]
+[ext_resource type="PackedScene" uid="uid://c8c1sadwel1eu" path="res://assets/models/windmill/windmill_3.glb" id="4_windmill_3"]
+[ext_resource type="Script" uid="uid://dqcxbpr5i1gru" path="res://scripts/buildings/animations/spinner.gd" id="5_spinner_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_windmill"]
+size = Vector3(4, 3, 4)
+
+[node name="Windmill" type="Node3D" unique_id=1028283446]
+script = ExtResource("1_visual_script")
+
+[node name="Models" type="Node3D" parent="." unique_id=1443145580]
+
+[node name="Windmill1" parent="Models" unique_id=1770905418 instance=ExtResource("2_windmill_1")]
+
+[node name="sails" parent="Models/Windmill1/PostMill_Rough/sail_mount" parent_id_path=PackedInt32Array(1770905418, 1431168562) index="0" unique_id=1931379953]
+script = ExtResource("5_spinner_script")
+
+[node name="Windmill2" parent="Models" unique_id=677490184 instance=ExtResource("3_windmill_2")]
+visible = false
+
+[node name="sails" parent="Models/Windmill2/PostMill_Fitted/sail_mount" parent_id_path=PackedInt32Array(677490184, 2145367419) index="0" unique_id=583003238]
+script = ExtResource("5_spinner_script")
+
+[node name="Windmill3" parent="Models" unique_id=808585766 instance=ExtResource("4_windmill_3")]
+visible = false
+
+[node name="sails" parent="Models/Windmill3/PostMill_Prosperous/sail_mount" parent_id_path=PackedInt32Array(808585766, 186691697) index="0" unique_id=250906125]
+script = ExtResource("5_spinner_script")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=2124313000]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=2063965793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_windmill")
+
+[editable path="Models/Windmill1"]
+[editable path="Models/Windmill2"]
+[editable path="Models/Windmill3"]

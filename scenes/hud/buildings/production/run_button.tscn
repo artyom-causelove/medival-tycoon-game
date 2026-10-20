@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://c0u1dwoekfptm" path="res://scenes/hud/buildings/production/scripts/run_button.gd" id="1_script_runbutton"]
+
+[node name="RunButton" type="Control" unique_id=1]
+custom_minimum_size = Vector2(56, 56)
+offset_right = 56.0
+offset_bottom = 56.0
+mouse_filter = 0
+script = ExtResource("1_script_runbutton")

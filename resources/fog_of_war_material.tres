@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://resources/fog_of_war.gdshader" id="1_shader"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/source_count = 0
+shader_parameter/edge_softness = 6.0
+shader_parameter/fog_color = Color(0.04, 0.04, 0.045, 1)

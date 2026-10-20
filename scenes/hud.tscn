@@ -1,0 +1,184 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/hud/hud_atlas.png" id="1_atlas"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="2_hud_script"]
+[ext_resource type="PackedScene" path="res://scenes/hud/build/build_panel.tscn" id="3_build_panel"]
+
+[sub_resource type="AtlasTexture" id="Atlas_ring_seasons"]
+atlas = ExtResource("1_atlas")
+region = Rect2(2, 2, 192, 192)
+
+[sub_resource type="AtlasTexture" id="Atlas_dial_face"]
+atlas = ExtResource("1_atlas")
+region = Rect2(198, 2, 140, 140)
+
+[sub_resource type="AtlasTexture" id="Atlas_panel_frame"]
+atlas = ExtResource("1_atlas")
+region = Rect2(342, 2, 152, 152)
+
+[sub_resource type="AtlasTexture" id="Atlas_crest_frame"]
+atlas = ExtResource("1_atlas")
+region = Rect2(2, 198, 132, 132)
+
+[sub_resource type="AtlasTexture" id="Atlas_sun"]
+atlas = ExtResource("1_atlas")
+region = Rect2(138, 198, 42, 42)
+
+[sub_resource type="AtlasTexture" id="Atlas_pointer_brass"]
+atlas = ExtResource("1_atlas")
+region = Rect2(184, 198, 4, 16)
+
+[sub_resource type="AtlasTexture" id="Atlas_tick_dim"]
+atlas = ExtResource("1_atlas")
+region = Rect2(192, 198, 4, 16)
+
+[sub_resource type="AtlasTexture" id="Atlas_rule_brass"]
+atlas = ExtResource("1_atlas")
+region = Rect2(200, 198, 58, 2)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("2_hud_script")
+
+[node name="DialRoot" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -236.0
+offset_right = -44.0
+offset_top = 38.0
+offset_bottom = 230.0
+pivot_offset = Vector2(192, 0)
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+
+[node name="RingSeasons" type="TextureRect" parent="DialRoot"]
+offset_right = 192.0
+offset_bottom = 192.0
+mouse_filter = 2
+texture = SubResource("Atlas_ring_seasons")
+
+[node name="DialFace" type="TextureRect" parent="DialRoot"]
+offset_left = 26.0
+offset_top = 26.0
+offset_right = 166.0
+offset_bottom = 166.0
+mouse_filter = 2
+texture = SubResource("Atlas_dial_face")
+
+[node name="TickBottom" type="TextureRect" parent="DialRoot"]
+offset_left = 94.0
+offset_top = 171.0
+offset_right = 98.0
+offset_bottom = 187.0
+mouse_filter = 2
+texture = SubResource("Atlas_tick_dim")
+
+[node name="TickLeft" type="TextureRect" parent="DialRoot"]
+offset_left = 5.0
+offset_top = 94.0
+offset_right = 9.0
+offset_bottom = 110.0
+pivot_offset = Vector2(2, 8)
+rotation_degrees = 90.0
+mouse_filter = 2
+texture = SubResource("Atlas_tick_dim")
+
+[node name="TickRight" type="TextureRect" parent="DialRoot"]
+offset_left = 183.0
+offset_top = 94.0
+offset_right = 187.0
+offset_bottom = 110.0
+pivot_offset = Vector2(2, 8)
+rotation_degrees = 90.0
+mouse_filter = 2
+texture = SubResource("Atlas_tick_dim")
+
+[node name="PointerBrass" type="TextureRect" parent="DialRoot"]
+offset_left = 94.0
+offset_top = 5.0
+offset_right = 98.0
+offset_bottom = 21.0
+pivot_offset = Vector2(2, 91)
+mouse_filter = 2
+texture = SubResource("Atlas_pointer_brass")
+
+[node name="SunIcon" type="TextureRect" parent="DialRoot"]
+offset_left = 75.0
+offset_top = 75.0
+offset_right = 117.0
+offset_bottom = 117.0
+mouse_filter = 2
+texture = SubResource("Atlas_sun")
+
+[node name="RuleBrass" type="TextureRect" parent="DialRoot"]
+offset_left = 67.0
+offset_top = 105.0
+offset_right = 125.0
+offset_bottom = 107.0
+mouse_filter = 2
+texture = SubResource("Atlas_rule_brass")
+
+[node name="TimeLabel" type="Label" parent="DialRoot"]
+offset_left = 16.0
+offset_top = 60.0
+offset_right = 176.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.9411765, 0.90588236, 0.8235294, 1)
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayLabel" type="Label" parent="DialRoot"]
+offset_left = 16.0
+offset_top = 113.0
+offset_right = 176.0
+offset_bottom = 133.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 13
+text = "ДЕНЬ 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugResourcesLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 110.0
+offset_right = 216.0
+offset_bottom = 294.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 0
+
+[node name="CrestRoot" type="Control" parent="."]
+offset_left = 36.0
+offset_top = 36.0
+offset_right = 188.0
+offset_bottom = 188.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+
+[node name="PanelFrame" type="NinePatchRect" parent="CrestRoot"]
+offset_right = 152.0
+offset_bottom = 152.0
+mouse_filter = 2
+texture = SubResource("Atlas_panel_frame")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="CrestFrame" type="NinePatchRect" parent="CrestRoot"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 142.0
+offset_bottom = 142.0
+mouse_filter = 2
+texture = SubResource("Atlas_crest_frame")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="BuildPanel" parent="." instance=ExtResource("3_build_panel")]

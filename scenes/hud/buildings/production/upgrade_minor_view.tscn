@@ -1,0 +1,442 @@
+[gd_scene format=3 uid="uid://dblebub1ljogg"]
+
+[ext_resource type="Texture2D" uid="uid://dy16dnsd2m6o8" path="res://assets/textures/ui/ui_atlas.png" id="1_8kyfr"]
+[ext_resource type="Script" uid="uid://ba5dr207nqlxm" path="res://scenes/hud/buildings/production/scripts/upgrade_minor_view.gd" id="2_script_upgrademinor"]
+
+[sub_resource type="AtlasTexture" id="Atlas_node_available"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(2, 134, 200, 62)
+
+[sub_resource type="AtlasTexture" id="Atlas_node_focus"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(2, 198, 200, 62)
+
+[sub_resource type="AtlasTexture" id="Atlas_slot_item"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(454, 198, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_node_locked"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(204, 134, 200, 62)
+
+[sub_resource type="AtlasTexture" id="Atlas_panel_inner"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(420, 198, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_slot_item_brass"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(2, 262, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_btn_wide"]
+atlas = ExtResource("1_8kyfr")
+region = Rect2(324, 198, 24, 36)
+
+[sub_resource type="StyleBoxTexture" id="Style_btn_wide"]
+texture = SubResource("Atlas_btn_wide")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[node name="UpgradeMinorView" type="Control" unique_id=1264886483]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 11.2
+offset_top = 81.2
+offset_right = 968.8
+offset_bottom = 590.8
+mouse_filter = 2
+script = ExtResource("2_script_upgrademinor")
+
+[node name="Stub" type="ColorRect" parent="." unique_id=1557903186]
+layout_mode = 0
+offset_left = 11.2
+offset_top = 58.8
+offset_right = 25.2
+offset_bottom = 61.6
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Connector01" type="ColorRect" parent="." unique_id=1315447804]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 58.8
+offset_right = 330.4
+offset_bottom = 61.6
+mouse_filter = 2
+color = Color(0.6901961, 0.5529412, 0.30980393, 1)
+
+[node name="Connector12" type="ColorRect" parent="." unique_id=1574743200]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 58.8
+offset_right = 624.4
+offset_bottom = 61.6
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Connector01Row1" type="ColorRect" parent="." unique_id=1597668381]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 159.6
+offset_right = 330.4
+offset_bottom = 162.4
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Connector12Row1" type="ColorRect" parent="." unique_id=1823021373]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 159.6
+offset_right = 624.4
+offset_bottom = 162.4
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Connector01Row2" type="ColorRect" parent="." unique_id=766221626]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 260.4
+offset_right = 330.4
+offset_bottom = 263.2
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Connector12Row2" type="ColorRect" parent="." unique_id=1782174919]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 260.4
+offset_right = 624.4
+offset_bottom = 263.2
+mouse_filter = 2
+color = Color(0.24705882, 0.2, 0.15294118, 1)
+
+[node name="Node00" type="TextureRect" parent="." unique_id=1878786964]
+layout_mode = 0
+offset_left = 25.2
+offset_top = 16.8
+offset_right = 305.2
+offset_bottom = 103.6
+mouse_filter = 2
+texture = SubResource("Atlas_node_available")
+
+[node name="Focus" type="TextureRect" parent="Node00" unique_id=1424888390]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 86.8
+mouse_filter = 2
+texture = SubResource("Atlas_node_focus")
+
+[node name="Slot" type="TextureRect" parent="Node00" unique_id=29727241]
+layout_mode = 0
+offset_left = 11.2
+offset_top = 21.0
+offset_right = 56.0
+offset_bottom = 65.8
+mouse_filter = 2
+texture = SubResource("Atlas_slot_item")
+
+[node name="Name" type="Label" parent="Node00" unique_id=1525427326]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9411765, 0.90588236, 0.8235294, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 1"
+
+[node name="Desc" type="Label" parent="Node00" unique_id=1896198246]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 17
+text = "доступно"
+
+[node name="Node01" type="TextureRect" parent="." unique_id=633659396]
+layout_mode = 0
+offset_left = 319.2
+offset_top = 16.8
+offset_right = 599.2
+offset_bottom = 103.6
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node01" unique_id=1291607685]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 2"
+
+[node name="Desc" type="Label" parent="Node01" unique_id=1220511405]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node02" type="TextureRect" parent="." unique_id=755941904]
+layout_mode = 0
+offset_left = 613.2
+offset_top = 16.8
+offset_right = 893.2
+offset_bottom = 103.6
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node02" unique_id=1013265879]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 3"
+
+[node name="Desc" type="Label" parent="Node02" unique_id=771052648]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node10" type="TextureRect" parent="." unique_id=1667641556]
+layout_mode = 0
+offset_left = 25.2
+offset_top = 117.6
+offset_right = 305.2
+offset_bottom = 204.4
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node10" unique_id=1739911825]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 4"
+
+[node name="Desc" type="Label" parent="Node10" unique_id=113927024]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node11" type="TextureRect" parent="." unique_id=1166188120]
+layout_mode = 0
+offset_left = 319.2
+offset_top = 117.6
+offset_right = 599.2
+offset_bottom = 204.4
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node11" unique_id=560879770]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 5"
+
+[node name="Desc" type="Label" parent="Node11" unique_id=1050706522]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node12" type="TextureRect" parent="." unique_id=1822402141]
+layout_mode = 0
+offset_left = 613.2
+offset_top = 117.6
+offset_right = 893.2
+offset_bottom = 204.4
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node12" unique_id=880969176]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 6"
+
+[node name="Desc" type="Label" parent="Node12" unique_id=1158282870]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node20" type="TextureRect" parent="." unique_id=774833063]
+layout_mode = 0
+offset_left = 25.2
+offset_top = 218.4
+offset_right = 305.2
+offset_bottom = 305.2
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node20" unique_id=2132569413]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 7"
+
+[node name="Desc" type="Label" parent="Node20" unique_id=1535687381]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node21" type="TextureRect" parent="." unique_id=1321099848]
+layout_mode = 0
+offset_left = 319.2
+offset_top = 218.4
+offset_right = 599.2
+offset_bottom = 305.2
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node21" unique_id=2066967054]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 8"
+
+[node name="Desc" type="Label" parent="Node21" unique_id=2043880950]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="Node22" type="TextureRect" parent="." unique_id=138321962]
+layout_mode = 0
+offset_left = 613.2
+offset_top = 218.4
+offset_right = 893.2
+offset_bottom = 305.2
+mouse_filter = 2
+texture = SubResource("Atlas_node_locked")
+
+[node name="Name" type="Label" parent="Node22" unique_id=2103475631]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 16.8
+offset_right = 271.6
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 20
+text = "Улучшение 9"
+
+[node name="Desc" type="Label" parent="Node22" unique_id=75770311]
+layout_mode = 0
+offset_left = 64.4
+offset_top = 44.8
+offset_right = 271.6
+offset_bottom = 67.2
+theme_override_colors/font_color = Color(0.42352942, 0.44705883, 0.4, 1)
+theme_override_font_sizes/font_size = 17
+text = "закрыто"
+
+[node name="BottomPanel" type="NinePatchRect" parent="." unique_id=1441329814]
+layout_mode = 0
+offset_left = 25.2
+offset_top = 319.2
+offset_right = 932.4
+offset_bottom = 414.4
+texture = SubResource("Atlas_panel_inner")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="SelectedIcon" type="TextureRect" parent="BottomPanel" unique_id=990921411]
+layout_mode = 0
+offset_left = 22.4
+offset_top = 22.4
+offset_right = 67.2
+offset_bottom = 67.2
+mouse_filter = 2
+texture = SubResource("Atlas_slot_item_brass")
+
+[node name="SelectedName" type="Label" parent="BottomPanel" unique_id=1335686604]
+layout_mode = 0
+offset_left = 81.2
+offset_top = 16.8
+offset_right = 560.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.9411765, 0.90588236, 0.8235294, 1)
+theme_override_font_sizes/font_size = 22
+text = "Улучшение 1"
+
+[node name="SelectedDesc" type="Label" parent="BottomPanel" unique_id=2063929273]
+layout_mode = 0
+offset_left = 81.2
+offset_top = 47.6
+offset_right = 560.0
+offset_bottom = 72.8
+theme_override_colors/font_color = Color(0.5529412, 0.5764706, 0.5176471, 1)
+theme_override_font_sizes/font_size = 18
+text = "Описание улучшения будет здесь"
+
+[node name="BuyButton" type="Button" parent="BottomPanel" unique_id=1864402144]
+layout_mode = 0
+offset_left = 733.6
+offset_top = 22.4
+offset_right = 884.8
+offset_bottom = 72.8
+focus_mode = 0
+theme_override_styles/normal = SubResource("Style_btn_wide")
+theme_override_styles/pressed = SubResource("Style_btn_wide")
+theme_override_styles/hover = SubResource("Style_btn_wide")
+text = "КУПИТЬ"

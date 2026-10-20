@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/hud/build/scripts/model_thumbnail.gd" id="1_script"]
+
+[node name="ModelThumbnail" type="SubViewportContainer"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+stretch = true
+script = ExtResource("1_script")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(80, 80)
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+current = true
+fov = 35.0
+
+[node name="KeyLight" type="DirectionalLight3D" parent="SubViewport"]
+rotation_degrees = Vector3(-45, -45, 0)
+light_color = Color(1, 0.94509804, 0.8392157, 1)
+light_energy = 1.2
+shadow_enabled = false
+
+[node name="FillLight" type="DirectionalLight3D" parent="SubViewport"]
+rotation_degrees = Vector3(-30, 135, 0)
+light_color = Color(0.74509805, 0.8117647, 0.9019608, 1)
+light_energy = 0.35
+shadow_enabled = false
+
+[node name="ModelSlot" type="Node3D" parent="SubViewport"]

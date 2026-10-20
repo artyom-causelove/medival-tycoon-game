@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bvpao55teeysr"]
+
+[ext_resource type="Texture2D" uid="uid://dy16dnsd2m6o8" path="res://assets/textures/ui/ui_atlas.png" id="1_ubiem"]
+[ext_resource type="PackedScene" path="res://scenes/hud/buildings/production/run_button.tscn" id="2_runbtn"]
+[ext_resource type="FontFile" path="res://fonts/Alegreya-Bold.woff" id="3_alegreya_bold"]
+[ext_resource type="FontFile" path="res://fonts/Alegreya-Regular.woff" id="4_alegreya_regular"]
+[ext_resource type="Script" uid="uid://b53l3h60sud4w" path="res://scenes/hud/buildings/production/scripts/recipe.gd" id="5_script_recipe"]
+
+[sub_resource type="AtlasTexture" id="Atlas_panel_inner"]
+atlas = ExtResource("1_ubiem")
+region = Rect2(420, 198, 32, 32)
+
+[sub_resource type="AtlasTexture" id="Atlas_row_recipe_sel"]
+atlas = ExtResource("1_ubiem")
+region = Rect2(2, 68, 296, 64)
+
+[sub_resource type="AtlasTexture" id="Atlas_slot_empty"]
+atlas = ExtResource("1_ubiem")
+region = Rect2(36, 262, 32, 32)
+
+[node name="RecipeBlock" type="NinePatchRect" unique_id=954728055]
+custom_minimum_size = Vector2(414.4, 89.6)
+offset_right = 414.4
+offset_bottom = 89.6
+mouse_filter = 0
+texture = SubResource("Atlas_panel_inner")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+script = ExtResource("5_script_recipe")
+
+[node name="Sel" type="TextureRect" parent="." unique_id=53865606]
+layout_mode = 0
+offset_right = 414.4
+offset_bottom = 89.6
+mouse_filter = 2
+texture = SubResource("Atlas_row_recipe_sel")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=69361909]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 21.0
+offset_right = 61.6
+offset_bottom = 68.6
+mouse_filter = 2
+texture = SubResource("Atlas_slot_empty")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=2045047334]
+layout_mode = 0
+offset_left = 74.2
+offset_top = 11.2
+offset_right = 331.8
+offset_bottom = 44.8
+theme_override_colors/font_color = Color(0.9411765, 0.90588236, 0.8235294, 1)
+theme_override_fonts/font = ExtResource("3_alegreya_bold")
+theme_override_font_sizes/font_size = 31
+text = "Рецепт"
+
+[node name="Desc" type="Label" parent="." unique_id=1592359547]
+layout_mode = 0
+offset_left = 74.2
+offset_top = 47.6
+offset_right = 331.8
+offset_bottom = 75.6
+theme_override_colors/font_color = Color(0.60392159, 0.63137257, 0.58823532, 1)
+theme_override_fonts/font = ExtResource("4_alegreya_regular")
+theme_override_font_sizes/font_size = 24
+
+[node name="RunButton" parent="." instance=ExtResource("2_runbtn")]
+layout_mode = 0
+offset_left = 344.4
+offset_top = 16.8
+offset_right = 400.4
+offset_bottom = 72.8
